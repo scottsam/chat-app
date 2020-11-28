@@ -1,0 +1,70 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  background: url("../components/Icons/cover-img-3.jpg") no-repeat center
+    center/cover;
+}
+body::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 100px 100px 250px black, inset -100px -100px 250px black;
+}
+
+#root {
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.join-wrap {
+  height: 100vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.joinInput {
+  border-radius: 50px;
+  padding: 15px 20px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.heading {
+  color: white;
+  font-size: 2.5em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(226, 149, 149);
+  text-align: center;
+}
+
+.btn {
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979ff;
+  padding: 10px;
+  display: inline-block;
+  border: none;
+  width: 20%;
+  color: #fff !important;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: translateY(-10%);
+}
