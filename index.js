@@ -3,7 +3,7 @@ const path=require('path')
 const http = require("http");
 const sockeio = require("socket.io");
 const cors = require("cors");
-const router = require("./route");
+
 const { addUser, getUser, getUsersInRoom, removeUser } = require("./users");
 
 const port = process.env.PORT || 4444;
@@ -12,7 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const io = sockeio(server);
 
-app.use("/", router);
+
 if (process.env.NODE_ENV === "production"){
       app.use(express.static(path.join(__dirname, "client", "build")))
       app.get("*", (req, res) => {
