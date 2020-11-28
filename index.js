@@ -13,6 +13,12 @@ const server = http.createServer(app);
 const io = sockeio(server);
 
 app.use("/", router);
+if (process.env.NODE_ENV === "production"){
+      app.use(express.static(path.join(__dirname, "client", "build")))
+      app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+      });
+    }
 
 //when the client is connected
 io.on("connection", (socket) => {
@@ -65,12 +71,7 @@ io.on("connection", (socket) => {
   });
 });
 
-if (process.env.NODE_ENV === "production"){
-      app.use(express.static(path.join(__dirname, "client", "build")))
-      app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname,  "build", "index.html"));
-      });
-    }
+
 
 server.listen(port, () => {
   console.log(`Listening on ${port}....`);
