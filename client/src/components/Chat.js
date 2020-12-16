@@ -5,7 +5,7 @@ import InfoBar from "./InfoBar";
 import Input from "./Input";
 import Messages from "./Messages";
 import TextContainer from "./TextContainer";
-import '../Styles/Chat.css'
+import "../Styles/Chat.css";
 let socket;
 
 const Chat = ({ location }) => {
@@ -20,7 +20,7 @@ const Chat = ({ location }) => {
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
 
-    socket = io.connect('/');
+    socket = io.connect("/");
     setName(name);
     setRoom(room);
     socket.emit("join", { name, room }, () => {});
@@ -34,7 +34,7 @@ const Chat = ({ location }) => {
 
   useEffect(() => {
     socket.on("message", (message) => {
-      setMessages(oldmsg=>[...oldmsg,message]);
+      setMessages((oldmsg) => [...oldmsg, message]);
     });
     socket.on("roomData", ({ users }) => {
       setUsers(users);
@@ -49,15 +49,9 @@ const Chat = ({ location }) => {
     }
   };
 
-  console.log(message, messages);
-
   return (
-    <div
-      className='outerContainer'
-    >
-      <div
-        className="innercontainer"
-      >
+    <div className="outerContainer">
+      <div className="innercontainer">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
         <Input
@@ -66,7 +60,7 @@ const Chat = ({ location }) => {
           message={message}
         />
       </div>
-      <TextContainer users={users} room={room}/>
+      <TextContainer users={users} room={room} />
     </div>
   );
 };
